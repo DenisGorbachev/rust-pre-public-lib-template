@@ -1920,9 +1920,6 @@ exclude = [
 [workspace.metadata.details]
 name = "rust-pre-public-lib-template"
 title = "Rust pre-public lib template"
-tagline = ""
-summary = ""
-announcement = ""
 readme = { generate = false }
 
 [workspace.lints.rust]
@@ -1949,9 +1946,6 @@ exclude.workspace = true
 
 [package.metadata.details]
 title = "Rust pre-public lib template"
-tagline = ""
-summary = ""
-announcement = ""
 
 [lints]
 workspace = true
