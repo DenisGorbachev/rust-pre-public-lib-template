@@ -6,10 +6,11 @@ import remarkHeadingShift from "npm:remark-heading-shift@1.1.2"
 import remarkParse from "npm:remark-parse@11.0.0"
 import remarkStringify from "npm:remark-stringify@11.0.0"
 import { unified } from "npm:unified@11.0.5"
-import { dirname, extname, fromFileUrl, join, relative } from "jsr:@std/path@1.1.4"
+import { basename, dirname, extname, fromFileUrl, join, relative } from "jsr:@std/path@1.1.4"
 
 const rootUrl = new URL(".", import.meta.url)
 const rootPath = fromFileUrl(rootUrl)
+const sourcePath = fromFileUrl(import.meta.url)
 const decoder = new TextDecoder()
 
 const isMarkdownPath = (path: string) => path.toLowerCase().endsWith(".md")
@@ -255,7 +256,7 @@ const removeTemporaryAgents = async (path: string) => {
   }
 }
 
-const destinationPath = join(rootPath, "AGENTS.md")
+const destinationPath = join(rootPath, `${basename(sourcePath, extname(sourcePath))}.md`)
 const temporaryPath = await Deno.makeTempFile({
   dir: dirname(destinationPath),
   prefix: ".AGENTS.",
